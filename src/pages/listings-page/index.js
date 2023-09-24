@@ -3,15 +3,18 @@ import ProductCard from '../../components/product-card';
 import DropdownFilter from '../../components/dropdown-filter';
 import Button from '../../components/button';
 import './styles.css';
+import { getStorageItem, updateStorageItem } from '../../utils/session-storage';
 
 const BASE_URL = 'https://fakestoreapi.com/products';
 const LISTINGS_NUMBER_INTERVAL = 10;
+const CATEGORY_FILTER_STORAGE_KEY = 'selectedCategoryFilter';
+const NUMBER_TO_FETCH_STORAGE_KEY = 'numberOfProductsToFetch';
 
 function ListingsPage() {
   const [listings, setListings] = useState([]);
   const [categoryOptions, setCategoryOptions] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState();
-  const [numberToFetch, setNumberToFetch] = useState(LISTINGS_NUMBER_INTERVAL);
+  const [categoryFilter, setCategoryFilter] = useState(getStorageItem(CATEGORY_FILTER_STORAGE_KEY) || '');
+  const [numberToFetch, setNumberToFetch] = useState(parseInt(getStorageItem(NUMBER_TO_FETCH_STORAGE_KEY)) || LISTINGS_NUMBER_INTERVAL);
   const [allResultsShown, setAllResultsShown] = useState(false);
 
   const fetchProducts = useCallback(async (category, limit) => {
@@ -52,6 +55,8 @@ function ListingsPage() {
 
   useEffect(() => { 
     fetchProducts(categoryFilter, numberToFetch);
+    updateStorageItem(CATEGORY_FILTER_STORAGE_KEY, categoryFilter);
+    updateStorageItem(NUMBER_TO_FETCH_STORAGE_KEY, numberToFetch)
   }, [categoryFilter, fetchProducts, numberToFetch]);
   
   return (
