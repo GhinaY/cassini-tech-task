@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../../components/product-card';
+import DropdownFilter from '../../components/dropdown-filter';
 import './styles.css';
 
 const BASE_URL = 'https://fakestoreapi.com/products';
 
 function ListingsPage() {
   const [listings, setListings] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState();
   const [limitPreference, setLimitPreference] = useState(10);
 
   const fetchProducts = useCallback(async (category, limit) => {
@@ -15,7 +17,7 @@ function ListingsPage() {
       (`?limit=${limit}`);
 
     const res = await fetch(url);
-    if (res.status === 404) {
+    if (res.ok !== true) {
       throw new Response("Error fetching listings", { status: res.status });
     };
 
@@ -23,15 +25,36 @@ function ListingsPage() {
     setListings(data);
   }, [])
 
+  const fetchCategories = useCallback(async () => {
+    const url = BASE_URL + '/categories';
+    const res = await fetch(url);
+    if (res.ok !== true) {
+      throw new Response("Error fetching categories", { status: res.status });
+    };
+
+    const data = await res.json();
+    setCategoryOptions(data);
+  }, []);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
   useEffect(() => { 
     fetchProducts(categoryFilter, limitPreference) 
   }, [categoryFilter, fetchProducts, limitPreference]);
   
   return (
     <div className='ListingsPageContainer'>
-      <h1>{categoryFilter ?? 'All'} Products</h1>
+      <h1 className='ListingsHeader'>{categoryFilter || 'All Products'}</h1>
+      <DropdownFilter 
+        filterName='Category' 
+        options={categoryOptions} 
+        currentSelection={categoryFilter} 
+        setCurrentSelection={setCategoryFilter}
+      />
       <div className='ListingsGrid'>
-        {listings.map((product) => <ProductCard {...product}/>)}
+        {listings.map((product) => <ProductCard key={product.id} {...product}/>)}
       </div>
     </div>
   );
