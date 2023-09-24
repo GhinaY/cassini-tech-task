@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../../components/product-card';
 import DropdownFilter from '../../components/dropdown-filter';
+import Button from '../../components/button';
 import './styles.css';
 
 const BASE_URL = 'https://fakestoreapi.com/products';
+const LISTINGS_NUMBER_INTERVAL = 10;
 
 function ListingsPage() {
   const [listings, setListings] = useState([]);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
-  const [limitPreference, setLimitPreference] = useState(10);
+  const [numberToFetch, setNumberToFetch] = useState(LISTINGS_NUMBER_INTERVAL);
+  const [allResultsShown, setAllResultsShown] = useState(false);
 
   const fetchProducts = useCallback(async (category, limit) => {
     const url = BASE_URL +
@@ -22,6 +25,13 @@ function ListingsPage() {
     };
 
     const data = await res.json();
+
+    if (data.length < limit) {
+      setAllResultsShown(true);
+    } else {
+      setAllResultsShown(false);
+    }
+    
     setListings(data);
   }, [])
 
@@ -41,8 +51,8 @@ function ListingsPage() {
   }, [fetchCategories]);
 
   useEffect(() => { 
-    fetchProducts(categoryFilter, limitPreference) 
-  }, [categoryFilter, fetchProducts, limitPreference]);
+    fetchProducts(categoryFilter, numberToFetch);
+  }, [categoryFilter, fetchProducts, numberToFetch]);
   
   return (
     <div className='ListingsPageContainer'>
@@ -60,6 +70,7 @@ function ListingsPage() {
       <div className='ListingsGrid'>
         {listings.map((product) => <ProductCard key={product.id} {...product}/>)}
       </div>
+      {!allResultsShown && <Button content='Load more' onClick={() => setNumberToFetch(numberToFetch + LISTINGS_NUMBER_INTERVAL)} />}
     </div>
   );
 }

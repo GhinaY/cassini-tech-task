@@ -1,0 +1,12 @@
+.Button {
+  min-width: 5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  font-size: medium;
+  font-weight: 600;
+  margin: auto;
+}
