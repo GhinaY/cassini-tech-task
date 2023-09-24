@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 function ProductCard(props) {
   const {
@@ -12,7 +13,7 @@ function ProductCard(props) {
   } = props;
 
   return useMemo(() => (
-    <div className='ProductCardContainer'>
+    <Link to={`/product/${id}`} className='ProductCardContainer'>
       <img src={image} className='ProductImage' alt={`the product ${title}`} />
       <div>
         <span className='ProductCategory'>{category}</span>
@@ -23,7 +24,7 @@ function ProductCard(props) {
         </div>
         <p className='ProductDescription'>{description}</p>
       </div>
-    </div>
+    </Link>
   ), [category, description, id, image, price, title]);
 }
 

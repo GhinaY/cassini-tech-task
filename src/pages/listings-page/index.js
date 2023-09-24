@@ -5,8 +5,8 @@ import Button from '../../components/button';
 import './styles.css';
 import { useListingsContext } from '../../utils/listings-context';
 import { getStorageItem, updateStorageItem } from '../../utils/session-storage';
+import { API_BASE_URL } from '../../utils';
 
-const BASE_URL = 'https://fakestoreapi.com/products';
 const LISTINGS_NUMBER_INTERVAL = 10;
 const CATEGORY_FILTER_STORAGE_KEY = 'selectedCategoryFilter';
 const NUMBER_TO_FETCH_STORAGE_KEY = 'numberOfProductsToFetch';
@@ -19,7 +19,7 @@ function ListingsPage() {
   const [allResultsShown, setAllResultsShown] = useState(false);
 
   const fetchProducts = useCallback(async (category, limit) => {
-    const url = BASE_URL +
+    const url = API_BASE_URL +
       (category ? `/category/${category}` : '') +
       (`?limit=${limit}`);
 
@@ -35,12 +35,12 @@ function ListingsPage() {
     } else {
       setAllResultsShown(false);
     }
-    
+
     setListingsFromArray(data);
   }, [setListingsFromArray])
 
   const fetchCategories = useCallback(async () => {
-    const url = BASE_URL + '/categories';
+    const url = API_BASE_URL + '/categories';
     const res = await fetch(url);
     if (res.ok !== true) {
       throw new Response("Error fetching categories", { status: res.status });

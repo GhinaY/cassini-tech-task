@@ -5,12 +5,17 @@ import {
 import './index.css';
 import ListingsPage from './pages/listings-page';
 import ListingsContextProvider from './utils/listings-context';
+import ProductPage from './pages/product-page';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <ListingsPage />,
   },
+  {
+    path: "/product/:id",
+    element: <ProductPage />,
+  }
 ]);
 
 function App() {
