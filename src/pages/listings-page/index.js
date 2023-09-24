@@ -3,6 +3,7 @@ import ProductCard from '../../components/product-card';
 import DropdownFilter from '../../components/dropdown-filter';
 import Button from '../../components/button';
 import './styles.css';
+import { useListingsContext } from '../../utils/listings-context';
 import { getStorageItem, updateStorageItem } from '../../utils/session-storage';
 
 const BASE_URL = 'https://fakestoreapi.com/products';
@@ -11,7 +12,7 @@ const CATEGORY_FILTER_STORAGE_KEY = 'selectedCategoryFilter';
 const NUMBER_TO_FETCH_STORAGE_KEY = 'numberOfProductsToFetch';
 
 function ListingsPage() {
-  const [listings, setListings] = useState([]);
+  const { listings, setListingsFromArray } = useListingsContext();
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState(getStorageItem(CATEGORY_FILTER_STORAGE_KEY) || '');
   const [numberToFetch, setNumberToFetch] = useState(parseInt(getStorageItem(NUMBER_TO_FETCH_STORAGE_KEY)) || LISTINGS_NUMBER_INTERVAL);
@@ -35,8 +36,8 @@ function ListingsPage() {
       setAllResultsShown(false);
     }
     
-    setListings(data);
-  }, [])
+    setListingsFromArray(data);
+  }, [setListingsFromArray])
 
   const fetchCategories = useCallback(async () => {
     const url = BASE_URL + '/categories';
@@ -73,7 +74,7 @@ function ListingsPage() {
         </div>
       </header>
       <div className='ListingsGrid'>
-        {listings.map((product) => <ProductCard key={product.id} {...product}/>)}
+        {Object.values(listings).map((product) => <ProductCard key={product.id} {...product}/>)}
       </div>
       {!allResultsShown && <Button content='Load more' onClick={() => setNumberToFetch(numberToFetch + LISTINGS_NUMBER_INTERVAL)} />}
     </div>
