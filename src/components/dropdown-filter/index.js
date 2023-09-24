@@ -11,7 +11,7 @@ function DropdownFilter(props) {
 
   return useMemo(() => (
     <div className='DropdownFilterContainer'>
-      <span className='FilterName'>{filterName}: </span>
+      <strong >{filterName}:</strong>
       <select className='FilterSelect' name={filterName} id={filterName} value={currentSelection} onChange={e => setCurrentSelection(e.target.value)}>
         <option value='' key='all'>all</option>
         {options.map((option) => <option value={option} key={option}>{option}</option>)}

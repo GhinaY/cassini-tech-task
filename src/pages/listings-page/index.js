@@ -46,13 +46,17 @@ function ListingsPage() {
   
   return (
     <div className='ListingsPageContainer'>
-      <h1 className='ListingsHeader'>{categoryFilter || 'All Products'}</h1>
-      <DropdownFilter 
-        filterName='Category' 
-        options={categoryOptions} 
-        currentSelection={categoryFilter} 
-        setCurrentSelection={setCategoryFilter}
-      />
+      <header className='Header'>
+        <h1 className='ListingsTitle'>{categoryFilter || 'All Products'}</h1>
+        <div className='FiltersBar'>
+          <DropdownFilter 
+            filterName='Category' 
+            options={categoryOptions} 
+            currentSelection={categoryFilter} 
+            setCurrentSelection={setCategoryFilter}
+          />
+        </div>
+      </header>
       <div className='ListingsGrid'>
         {listings.map((product) => <ProductCard key={product.id} {...product}/>)}
       </div>

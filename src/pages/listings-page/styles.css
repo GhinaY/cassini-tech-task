@@ -1,3 +1,52 @@
-.ListingsHeader {
+.ListingsPageContainer {
+  align-items: center;
+  width: 100%;
+}
+
+.Header {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  top: 0;
+  width: 100%;
+  height: 8rem;
+
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.ListingsTitle {
   text-transform: capitalize;
-};
+  margin-bottom: 0;
+}
+
+.FiltersBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.ListingsGrid {
+  padding: 10rem 1rem 2rem;
+  display: grid;
+  width: 100%;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  align-items: center;
+
+  @media (min-width: 43rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 85rem) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

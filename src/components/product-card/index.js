@@ -13,12 +13,16 @@ function ProductCard(props) {
 
   return useMemo(() => (
     <div className='ProductCardContainer'>
-      <p>{id}</p>
-      <p>{category}</p>
-      <h1>{title}</h1>
-      <p>{price}</p>
       <img src={image} className='ProductImage' alt={`the product ${title}`} />
-      <p>{description}</p>
+      <div>
+        <span className='ProductCategory'>{category}</span>
+        <span className='ProductTitle'>{title}</span>
+        <div className='ProductNumbers'>
+          <span>ID: {id}</span>
+          <span>£{price}</span>
+        </div>
+        <p className='ProductDescription'>{description}</p>
+      </div>
     </div>
   ), [category, description, id, image, price, title]);
 }
