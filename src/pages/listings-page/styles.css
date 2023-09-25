@@ -25,7 +25,7 @@
   margin-bottom: 0;
 }
 
-.FiltersBar {
+.ControlsBar {
   display: flex;
   flex-direction: row;
   align-items: center;

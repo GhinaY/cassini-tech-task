@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import CategoryFilter from '../../components/category-filter';
-import ProductCard from '../../components/product-card';
-import Button from '../../components/ui/button';
+import { useNavigate } from 'react-router-dom';
 import { useListingsContext } from '../../utils/listings-context';
 import { getStorageItem, updateStorageItem } from '../../utils/session-storage';
 import { API_BASE_URL } from '../../utils';
+import CategoryFilter from '../../components/category-filter';
+import ProductCard from '../../components/product-card';
+import Button from '../../components/ui/button';
 import './styles.css';
 
 const LISTINGS_NUMBER_INTERVAL = 10;
@@ -12,6 +13,7 @@ const CATEGORY_FILTER_STORAGE_KEY = 'selectedCategoryFilter';
 const NUMBER_TO_FETCH_STORAGE_KEY = 'numberOfProductsToFetch';
 
 function ListingsPage() {
+  const navigate = useNavigate();
   const { listings, setListingsFromArray } = useListingsContext();
   const [categoryFilter, setCategoryFilter] = useState(getStorageItem(CATEGORY_FILTER_STORAGE_KEY) || '');
   const [numberToFetch, setNumberToFetch] = useState(parseInt(getStorageItem(NUMBER_TO_FETCH_STORAGE_KEY)) || LISTINGS_NUMBER_INTERVAL);
@@ -48,12 +50,13 @@ function ListingsPage() {
     <div className='ListingsPageContainer'>
       <header className='Header'>
         <h1 className='ListingsTitle'>{categoryFilter || 'All Products'}</h1>
-        <div className='FiltersBar'>
+        <div className='ControlsBar'>
           <CategoryFilter 
             value={categoryFilter}
             setCurrentSelection={setCategoryFilter}
             shouldShowOptionForAll
           />
+          <Button onClick={() => navigate('/create')} content='Create' />
         </div>
       </header>
       <div className='ListingsGrid'>

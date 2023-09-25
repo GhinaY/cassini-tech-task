@@ -9,13 +9,17 @@ import ProductPage from './pages/product-page';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <ListingsPage />,
   },
   {
-    path: "/product/:id",
+    path: '/product/:id',
     element: <ProductPage />,
-  }
+  },
+  {
+    path: '/create',
+    element: <ProductPage createMode />,
+  },
 ]);
 
 function App() {

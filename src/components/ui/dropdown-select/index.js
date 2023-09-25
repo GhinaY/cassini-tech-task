@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import './styles.css';
 
-function DropdownSelect({filterName,
+function DropdownSelect({
+  filterName,
   options,
   setCurrentSelection,
   shouldShowOptionForAll = false, 

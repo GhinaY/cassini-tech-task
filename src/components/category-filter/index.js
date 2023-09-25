@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import DropdownSelect from '../../components/ui/dropdown-filter';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import DropdownSelect from '../ui/dropdown-select';
 import { API_BASE_URL } from '../../utils';
 
 function CategoryFilter({...props}) {
@@ -20,13 +20,13 @@ function CategoryFilter({...props}) {
     fetchCategories();
   }, [fetchCategories]);
 
-  return (
+  return useMemo(() => (
     <DropdownSelect 
       filterName='Category' 
       options={categoryOptions} 
       {...props}
     />
-  );
+  ), [categoryOptions, props]);
 }
 
 export default CategoryFilter;
