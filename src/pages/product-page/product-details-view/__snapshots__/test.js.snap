@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDetailsView renders correctly when listing data is available 1`] = `
+<DocumentFragment>
+  <img
+    alt="the product Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+    class="ProductImage"
+    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+  />
+  <div
+    class="ProductDetails"
+  >
+    <a
+      class="BackButton"
+      href="/"
+    >
+      &lt; Back to listings
+    </a>
+    <span
+      class="ProductCategory"
+    >
+      men's clothing
+    </span>
+    <h1
+      class="ProductTitle"
+    >
+      Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+    </h1>
+    <span>
+      ID: 1
+    </span>
+    <span>
+      £109.95
+    </span>
+    <p
+      class="ProductDescription"
+    >
+      Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
+    </p>
+    <button
+      class="Button"
+    >
+      Edit
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ProductDetailsView renders error message when listing data is not available 1`] = `
+<DocumentFragment>
+  <div>
+    No product information available
+  </div>
+</DocumentFragment>
+`;

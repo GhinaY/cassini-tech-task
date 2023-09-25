@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 
-const ListingsContext = createContext(null);
+export const ListingsContext = createContext(null);
 
 export const useListingsContext = () => useContext(ListingsContext);
 

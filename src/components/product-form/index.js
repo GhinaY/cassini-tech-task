@@ -23,7 +23,7 @@ function ProductForm({createMode = false, listingDetails, onSubmit}) {
         body:JSON.stringify(newProductDetails)
       });
       console.debug(res);
-      if (res.ok !== true) {
+      if (!res.ok) {
         throw new Error("Error creating new product");
       };
 
@@ -47,7 +47,7 @@ function ProductForm({createMode = false, listingDetails, onSubmit}) {
         body:JSON.stringify(newProductDetails)
       });
 
-      if (res.ok !== true) {
+      if (!res.ok) {
         throw new Error("Error updating listing details");
       };
 

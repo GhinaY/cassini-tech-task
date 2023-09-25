@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingsPage renders page title 1`] = `
+<DocumentFragment>
+  <div
+    class="ListingsPageContainer"
+  >
+    <header
+      class="Header"
+    >
+      <h1
+        class="ListingsTitle"
+      >
+        All Products
+      </h1>
+      <div
+        class="ControlsBar"
+      >
+        <div>
+          category filter
+        </div>
+        <button
+          class="Button"
+        >
+          Create
+        </button>
+      </div>
+    </header>
+    <div
+      class="ListingsGrid"
+    >
+      <div>
+        1
+      </div>
+      <div>
+        2
+      </div>
+      <div>
+        3
+      </div>
+      <div>
+        4
+      </div>
+      <div>
+        5
+      </div>
+      <div>
+        6
+      </div>
+      <div>
+        7
+      </div>
+      <div>
+        8
+      </div>
+      <div>
+        9
+      </div>
+      <div>
+        10
+      </div>
+    </div>
+    <button
+      class="Button"
+    >
+      Load more
+    </button>
+  </div>
+</DocumentFragment>
+`;

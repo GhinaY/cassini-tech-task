@@ -24,20 +24,24 @@ function ListingsPage() {
       (category ? `/category/${category}` : '') +
       (`?limit=${limit}`);
 
-    const res = await fetch(url);
-    if (res.ok !== true) {
-      throw new Response("Error fetching listings", { status: res.status });
-    };
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error("Error fetching listings");
+      };
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.length < limit) {
-      setAllResultsShown(true);
-    } else {
-      setAllResultsShown(false);
+      if (data.length < limit) {
+        setAllResultsShown(true);
+      } else {
+        setAllResultsShown(false);
+      }
+
+      setListingsFromArray(data);
+    } catch (error) {
+      console.log(error);
     }
-
-    setListingsFromArray(data);
   }, [setListingsFromArray])
 
   useEffect(() => { 

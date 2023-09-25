@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard renders correctly 1`] = `
+<DocumentFragment>
+  <a
+    class="ProductCardContainer"
+    href="/product/1"
+  >
+    <img
+      alt="the product Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+      class="ProductImage"
+      src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+    />
+    <div>
+      <span
+        class="ProductCategory"
+      >
+        men's clothing
+      </span>
+      <span
+        class="ProductTitle"
+      >
+        Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+      </span>
+      <div
+        class="ProductNumbers"
+      >
+        <span>
+          ID: 1
+        </span>
+        <span>
+          £109.95
+        </span>
+      </div>
+      <p
+        class="ProductDescription"
+      >
+        Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
+      </p>
+    </div>
+  </a>
+</DocumentFragment>
+`;

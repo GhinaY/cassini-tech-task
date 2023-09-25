@@ -7,13 +7,19 @@ function CategoryFilter({...props}) {
 
   const fetchCategories = useCallback(async () => {
     const url = API_BASE_URL + '/categories';
-    const res = await fetch(url);
-    if (res.ok !== true) {
-      throw new Response("Error fetching categories", { status: res.status });
-    };
+    
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error("Error fetching categories");
+      };
 
-    const data = await res.json();
-    setCategoryOptions(data);
+      const data = await res.json();
+      setCategoryOptions(data);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   }, []);
 
   useEffect(() => {

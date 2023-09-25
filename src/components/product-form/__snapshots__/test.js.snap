@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductForm renders correctly when existing listing data available 1`] = `
+<DocumentFragment>
+  <img
+    alt="the product"
+    class="ProductImage"
+    src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+  />
+  <form
+    class="ProductDetails"
+    id="listingDetailsForm"
+  >
+    <div>
+      category filter
+    </div>
+    <label
+      for="title"
+    >
+      Product title:
+    </label>
+    <input
+      class="ProductTitle"
+      name="title"
+      type="text"
+      value="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+    />
+    <label
+      for="price"
+    >
+      Product price:
+    </label>
+    <input
+      name="price"
+      type="number"
+      value="109.95"
+    />
+    <label
+      for="image"
+    >
+      Product price:
+    </label>
+    <input
+      name="image"
+      type="url"
+      value="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+    />
+    <label
+      for="description"
+    >
+      Product description:
+    </label>
+    <textarea
+      name="description"
+    >
+      Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday
+    </textarea>
+    <button
+      class="Button"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`ProductForm renders correctly when no existing listing data available 1`] = `
+<DocumentFragment>
+  <img
+    alt="the product"
+    class="ProductImage"
+    src="https://fakeimg.pl/400x400?text=No+img"
+  />
+  <form
+    class="ProductDetails"
+    id="listingDetailsForm"
+  >
+    <div>
+      category filter
+    </div>
+    <label
+      for="title"
+    >
+      Product title:
+    </label>
+    <input
+      class="ProductTitle"
+      name="title"
+      type="text"
+      value=""
+    />
+    <label
+      for="price"
+    >
+      Product price:
+    </label>
+    <input
+      name="price"
+      type="number"
+      value=""
+    />
+    <label
+      for="image"
+    >
+      Product price:
+    </label>
+    <input
+      name="image"
+      type="url"
+      value="https://fakeimg.pl/400x400?text=No+img"
+    />
+    <label
+      for="description"
+    >
+      Product description:
+    </label>
+    <textarea
+      name="description"
+    />
+    <button
+      class="Button"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</DocumentFragment>
+`;

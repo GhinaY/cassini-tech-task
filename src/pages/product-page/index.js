@@ -16,16 +16,21 @@ function ProductPage({ createMode = false }) {
 
   const fetchListing = useCallback(async () => {
     if (listingId) {
-    setIsLoading(true);
-    const url = API_BASE_URL + `/${id}`;
-    const res = await fetch(url);
-    if (res.ok !== true) {
-      throw new Response("Error fetching listing data", { status: res.status });
-    };
+      setIsLoading(true);
+      try {
+        const res = await fetch(API_BASE_URL + '/' + listingId);
+        if (!res.ok) {
+          throw new Error("Error fetching listing data");
+        };
 
-    const data = await res.json();
-    updateSingleListing(data);
-    setIsLoading(false);
+        const data = await res.json();
+        updateSingleListing(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+        return;
+      }
     }
   }, [listingId, updateSingleListing]);
 

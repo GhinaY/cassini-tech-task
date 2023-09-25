@@ -6,6 +6,7 @@ import './index.css';
 import ListingsPage from './pages/listings-page';
 import ListingsContextProvider from './utils/listings-context';
 import ProductPage from './pages/product-page';
+import ErrorPage from './pages/error-page';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/create',
     element: <ProductPage createMode />,
+  },
+  {
+    path: '*',
+    element: <ErrorPage error={new Error("Page not found")}/>
   },
 ]);
 
